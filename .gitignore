@@ -1,0 +1,23 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+kinetix
+bin/
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Local cache databases (keep benchmark artifacts tracked if desired, ignore runtime tmp)
+*.db
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm

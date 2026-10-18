@@ -1,0 +1,61 @@
+{
+  "ENV-01-OWASP-JuiceShop": {
+    "target_id": "ENV-01-OWASP-JuiceShop",
+    "base_url": "http://127.0.0.1:45115",
+    "waf_vendor": "none",
+    "cpes": {
+      "cpe:2.3:a:angular:angular:17.3.0:*:*:*:*:*:*:*": 0.95,
+      "cpe:2.3:a:expressjs:express:4.18.2:*:*:*:*:*:*:*": 0.995,
+      "cpe:2.3:a:owasp:juice_shop:16.2.1:*:*:*:*:*:*:*": 0.997,
+      "cpe:2.3:a:sqlite:sqlite:5.1.7:*:*:*:*:*:*:*": 0.94
+    },
+    "timestamp": 1792355430
+  },
+  "ENV-02-DVWA-ModSecurity-PL3": {
+    "target_id": "ENV-02-DVWA-ModSecurity-PL3",
+    "base_url": "http://127.0.0.1:45116",
+    "waf_vendor": "modsecurity",
+    "cpes": {
+      "cpe:2.3:a:apache:http_server:2.4.58:*:*:*:*:*:*:*": 0.92,
+      "cpe:2.3:a:dvwa:dvwa:2.4:*:*:*:*:*:*:*": 0.95,
+      "cpe:2.3:a:php:php:8.2.12:*:*:*:*:*:*:*": 0.92
+    },
+    "timestamp": 1792355430
+  },
+  "ENV-03-OWASP-crAPI": {
+    "target_id": "ENV-03-OWASP-crAPI",
+    "base_url": "http://127.0.0.1:45117",
+    "waf_vendor": "none",
+    "cpes": {
+      "cpe:2.3:a:owasp:crapi:1.2.0:*:*:*:*:*:*:*": 0.996
+    },
+    "timestamp": 1792355431
+  },
+  "ENV-04A-OFBiz-18.12.09-Exposed": {
+    "target_id": "ENV-04A-OFBiz-18.12.09-Exposed",
+    "base_url": "http://127.0.0.1:45118",
+    "waf_vendor": "none",
+    "cpes": {
+      "cpe:2.3:a:apache:ofbiz:18.12.09:*:*:*:*:*:*:*": 0.998
+    },
+    "timestamp": 1792355431
+  },
+  "ENV-04B-OFBiz-18.12.12-Patched": {
+    "target_id": "ENV-04B-OFBiz-18.12.12-Patched",
+    "base_url": "http://127.0.0.1:45119",
+    "waf_vendor": "none",
+    "cpes": {
+      "cpe:2.3:a:apache:ofbiz:18.12.12:*:*:*:*:*:*:*": 0.998
+    },
+    "timestamp": 1792355431
+  },
+  "ENV-04C-OFBiz-18.12.09-ProxyBlocked": {
+    "target_id": "ENV-04C-OFBiz-18.12.09-ProxyBlocked",
+    "base_url": "http://127.0.0.1:45120",
+    "waf_vendor": "none",
+    "cpes": {
+      "cpe:2.3:a:apache:ofbiz:18.12.09:*:*:*:*:*:*:*": 0.998
+    },
+    "timestamp": 1792355432
+  }
+}

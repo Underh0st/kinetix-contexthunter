@@ -1,0 +1,22 @@
+# ContextHunter (KINETIX) — Strict Scope Lockfile Example
+program_name: "Authorized Bug Bounty Program"
+bounty_header:
+  name: "X-Bug-Bounty"
+  value: "HackerOne-operator_handle"
+
+scope:
+  allowed_hosts:
+    - "*.target.example"
+    - "api.target.example"
+  excluded_hosts:
+    - "billing.target.example"
+    - "logout.target.example"
+    - "*.gov"
+  allowed_cidrs:
+    - "127.0.0.0/8"
+
+stealth_and_pacing:
+  max_rps: 15.0
+  base_jitter_ms: 25.0
+  max_backoff_ms: 3000.0
+  enforce_read_only: true

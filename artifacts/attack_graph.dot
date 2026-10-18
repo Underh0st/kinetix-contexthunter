@@ -1,0 +1,57 @@
+digraph ContextHunter_AttackGraph {
+  rankdir=LR;
+  node [shape=box, style="rounded,filled", fontname="Consolas", fontsize=10];
+  edge [fontname="Consolas", fontsize=9];
+
+  "t1_waf" [label="[ENV-01-OWASP-JuiceShop] WAF: none", fillcolor="#FFF3E0"];
+  "t1_tech_3" [label="[ENV-01-OWASP-JuiceShop] cpe:2.3:a:owasp:juice_shop:16.2.1:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t1_ep__rest_products_search" [label="[ENV-01-OWASP-JuiceShop] /rest/products/search", fillcolor="#E8F5E9"];
+  "t1_cve_CVE_2024_31905" [label="[ENV-01-OWASP-JuiceShop] CVE-2024-31905 (P_exec=1.00, Tier=HIGH)", fillcolor="#FFEBEE"];
+  "t1_poc_CVE_2024_31905" [label="[ENV-01-OWASP-JuiceShop] PoC Verified (200, 59B, SHA256:8aa716683757...)", fillcolor="#FCE4EC"];
+  "t2_waf" [label="[ENV-02-DVWA-ModSecurity-PL3] WAF: modsecurity (mode=block_immediate, PL=3)", fillcolor="#FFF3E0"];
+  "t2_tech_4" [label="[ENV-02-DVWA-ModSecurity-PL3] cpe:2.3:a:dvwa:dvwa:2.4:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t2_ep__vulnerabilities_sqli_" [label="[ENV-02-DVWA-ModSecurity-PL3] /vulnerabilities/sqli/", fillcolor="#E8F5E9"];
+  "t2_cve_CVE_2023_38408" [label="[ENV-02-DVWA-ModSecurity-PL3] CVE-2023-38408 (P_exec=0.05, Tier=LOW)", fillcolor="#FFFDE7"];
+  "t3_waf" [label="[ENV-03-OWASP-crAPI] WAF: none", fillcolor="#FFF3E0"];
+  "t3_user_1" [label="[ENV-03-OWASP-crAPI] Identity: svc_mechanic@crapi.local (t=73.93, mean=38.7ms)", fillcolor="#E3F2FD"];
+  "t3_tech_2" [label="[ENV-03-OWASP-crAPI] cpe:2.3:a:owasp:crapi:1.2.0:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t3_ep__workshop_api_mechanic_receive_report" [label="[ENV-03-OWASP-crAPI] /workshop/api/mechanic/receive_report", fillcolor="#E8F5E9"];
+  "t3_cve_CVE_2024_29847" [label="[ENV-03-OWASP-crAPI] CVE-2024-29847 (P_exec=0.96, Tier=HIGH)", fillcolor="#FFEBEE"];
+  "t3_poc_CVE_2024_29847" [label="[ENV-03-OWASP-crAPI] PoC Verified (206, 70B, SHA256:3ab265f57cd1...)", fillcolor="#FCE4EC"];
+  "t4_waf" [label="[ENV-04A-OFBiz-18.12.09-Exposed] WAF: none", fillcolor="#FFF3E0"];
+  "t4_tech_1" [label="[ENV-04A-OFBiz-18.12.09-Exposed] cpe:2.3:a:apache:ofbiz:18.12.09:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t4_ep__webtools_control_main" [label="[ENV-04A-OFBiz-18.12.09-Exposed] /webtools/control/main", fillcolor="#E8F5E9"];
+  "t4_cve_CVE_2023_51467" [label="[ENV-04A-OFBiz-18.12.09-Exposed] CVE-2023-51467 (P_exec=1.00, Tier=HIGH)", fillcolor="#FFEBEE"];
+  "t4_poc_CVE_2023_51467" [label="[ENV-04A-OFBiz-18.12.09-Exposed] PoC Verified (206, 82B, SHA256:6b6fcf3128ca...)", fillcolor="#FCE4EC"];
+  "t5_waf" [label="[ENV-04B-OFBiz-18.12.12-Patched] WAF: none", fillcolor="#FFF3E0"];
+  "t5_tech_1" [label="[ENV-04B-OFBiz-18.12.12-Patched] cpe:2.3:a:apache:ofbiz:18.12.09:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t5_ep__webtools_control_main" [label="[ENV-04B-OFBiz-18.12.12-Patched] /webtools/control/main", fillcolor="#E8F5E9"];
+  "t5_cve_CVE_2023_51467" [label="[ENV-04B-OFBiz-18.12.12-Patched] CVE-2023-51467 (P_exec=0.00, Tier=LOW)", fillcolor="#FFFDE7"];
+  "t6_waf" [label="[ENV-04C-OFBiz-18.12.09-ProxyBlocked] WAF: none", fillcolor="#FFF3E0"];
+  "t6_tech_1" [label="[ENV-04C-OFBiz-18.12.09-ProxyBlocked] cpe:2.3:a:apache:ofbiz:18.12.09:*:*:*:*:*:*:*", fillcolor="#F3E5F5"];
+  "t6_ep__webtools_control_main" [label="[ENV-04C-OFBiz-18.12.09-ProxyBlocked] /webtools/control/main", fillcolor="#E8F5E9"];
+  "t6_cve_CVE_2023_51467" [label="[ENV-04C-OFBiz-18.12.09-ProxyBlocked] CVE-2023-51467 (P_exec=0.10, Tier=LOW)", fillcolor="#FFFDE7"];
+
+  "t1_tech_3" -> "t1_cve_CVE_2024_31905" [label="VERSION_MATCH (1.00)"];
+  "t1_waf" -> "t1_cve_CVE_2024_31905" [label="WAF_PERMEABILITY (1.00)"];
+  "t1_ep__rest_products_search" -> "t1_cve_CVE_2024_31905" [label="EXPOSES_ENDPOINT (1.00)"];
+  "t1_cve_CVE_2024_31905" -> "t1_poc_CVE_2024_31905" [label="ZERO_MUTATION_VERIFIED (1.00)"];
+  "t2_tech_4" -> "t2_cve_CVE_2023_38408" [label="VERSION_MATCH (0.95)"];
+  "t2_waf" -> "t2_cve_CVE_2023_38408" [label="WAF_PERMEABILITY (0.05)"];
+  "t2_ep__vulnerabilities_sqli_" -> "t2_cve_CVE_2023_38408" [label="EXPOSES_ENDPOINT (1.00)"];
+  "t3_user_1" -> "t3_ep__workshop_api_mechanic_receive_report" [label="ENABLES_AUTHENTICATED_OR_BOLA_VECTOR (0.91)"];
+  "t3_tech_2" -> "t3_cve_CVE_2024_29847" [label="VERSION_MATCH (1.00)"];
+  "t3_waf" -> "t3_cve_CVE_2024_29847" [label="WAF_PERMEABILITY (1.00)"];
+  "t3_ep__workshop_api_mechanic_receive_report" -> "t3_cve_CVE_2024_29847" [label="EXPOSES_ENDPOINT (1.00)"];
+  "t3_cve_CVE_2024_29847" -> "t3_poc_CVE_2024_29847" [label="ZERO_MUTATION_VERIFIED (1.00)"];
+  "t4_tech_1" -> "t4_cve_CVE_2023_51467" [label="VERSION_MATCH (1.00)"];
+  "t4_waf" -> "t4_cve_CVE_2023_51467" [label="WAF_PERMEABILITY (1.00)"];
+  "t4_ep__webtools_control_main" -> "t4_cve_CVE_2023_51467" [label="EXPOSES_ENDPOINT (1.00)"];
+  "t4_cve_CVE_2023_51467" -> "t4_poc_CVE_2023_51467" [label="ZERO_MUTATION_VERIFIED (1.00)"];
+  "t5_tech_1" -> "t5_cve_CVE_2023_51467" [label="VERSION_MATCH (0.00)"];
+  "t5_waf" -> "t5_cve_CVE_2023_51467" [label="WAF_PERMEABILITY (0.00)"];
+  "t5_ep__webtools_control_main" -> "t5_cve_CVE_2023_51467" [label="EXPOSES_ENDPOINT (0.00)"];
+  "t6_tech_1" -> "t6_cve_CVE_2023_51467" [label="VERSION_MATCH (1.00)"];
+  "t6_waf" -> "t6_cve_CVE_2023_51467" [label="WAF_PERMEABILITY (1.00)"];
+  "t6_ep__webtools_control_main" -> "t6_cve_CVE_2023_51467" [label="EXPOSES_ENDPOINT (0.10)"];
+}
